@@ -2,7 +2,7 @@
 ---
 # MARVEL API
 
-This is a simple mavel characters api that has two endpoints
+This is a simple mavel characters api.
 
 ## Requirements
 Install [Node.js](https://nodejs.org/en/download/) on your machine.
@@ -39,3 +39,14 @@ To run the tests
 ```bash
 npm run test
 ```
+&nbsp;
+## Code Explanation
+#### /characters caching strategy
+In this project [node-cache](https://github.com/node-cache/node-cache) library was used to do an in-momory caching. Refer to [character.service.ts](https://github.com/amirative/marvel-test-api/blob/master/src/services/character.service.ts) file to see the code. Below are the steps taken to cache the results obtained from Marvel's API:
+1. Get the last modified character & total number of characters in Marvels API using /characters endpoint with (orderBy: '-modified' and limit:1). 
+2. Compare the last_modified timestamp obtained in step 1  with the cached last_modified value.
+   - If both values are equal, then serve the data from the cache 
+   - If not equal, then get the latest list from Marvel’s API then store the results in the cache and update the cached last_modified.
+
+#### Getting all characters data from Marvel’s API
+After we get the total number of records (poinit 1 above), we create an array of javascript promises. Each promise will have a limit of 100 records. So if the total number of characters on Marvel’s API is 1450, 15 promises will be created and run concurrently to get the data. After getting all the data we will filter the ids only cache then in memory.
