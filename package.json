@@ -7,8 +7,8 @@
     "start": "node dist/app.js",
     "dev": "nodemon src/app.ts",
     "build": "tsc -p .",
-    "test": "jest -c ./jest.unit.json",
-    "test:watch": "npm run test -- --watchAll --detectOpenHandles --verbose",
+    "test": "jest -c ./jest.unit.json --verbose",
+    "test:watch": "npm run test -- --watchAll --detectOpenHandles",
     "test:coverage": "jest --coverage -c ./jest.unit.json"
   },
   "author": "Amir Babiker",
