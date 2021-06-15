@@ -1,0 +1,51 @@
+paths:
+  /characters:
+    get:
+      tags:
+        - Characters
+      description: Get all characters' ids
+
+      responses:
+        200:
+          description: Character Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: integer
+                example: [1111111,2222222,3333333,4444444]
+        404:
+          description: Error
+
+  /characters/{id}:
+    get:
+      tags:
+        - Characters
+      description: Get character by id
+      parameters:
+        - in: path
+          name: id
+          type: String
+          required: true
+          description: e.g. 1009165
+      responses:
+        200:
+          description: Character Object
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 12345678
+                  name:
+                    type: string
+                    example: "Nodeman"
+                  description:
+                    type: string
+                    example: "A superhero who can build any node js app in seconds"
+
+        404:
+          description: Not Found
