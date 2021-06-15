@@ -13,7 +13,7 @@ Install [Node.js](https://nodejs.org/en/download/) on your machine.
     npm install
     ```
    
-2. copy **/.env.example** to **/.env** and update the **.env** file with your Marvel's api keys (MARVEL_PUBLIC_KEY & MARVEL_PRIVATE_KEY). Default port is set to 8080 but you can change it in the .env file
+2. copy **/.env.example** to **/.env** and update the **.env** file with your Marvel's api keys (MARVEL_PUBLIC_KEY & MARVEL_PRIVATE_KEY). you can get the Marvel's api keys from [Marvel's Developers Site](https://developer.marvel.com/). The default port is set to 8080 but you can change it in the .env file
     ```
     PORT=8080
 
